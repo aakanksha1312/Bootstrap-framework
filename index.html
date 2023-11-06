@@ -1,0 +1,122 @@
+<html>
+<head>
+
+    <title>Shopping Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-fluid p-5 bg-primary text-white text-center">
+        <h1><mark>Bootstrap Framework</mark></h1><br>  
+       <h1><mark>Login</mark></h1>
+        <form onsubmit="return login">
+            <input type="text" id="username" placeholder="Username" required><br>
+            <input type="password" id="password" placeholder="Password" required><br>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="#" onclick="showRegistration()"></a></p>
+        <div  class="text-white text-center bg-success">
+            <h1><mark>Register</mark></h1>
+            <form onsubmit="return register()">
+                <input type="text" id="regUsername" placeholder="Username" required><br>
+                <input type="password" id="regPassword" placeholder="Password" required><br>
+                <input type="date" id="regdate" placeholder="date" required><br> 
+                <label for="email">Enter your email:</label>
+                <input type="email" id="email" name="email">
+                <button type="submit">Register</button>
+            </form>
+        
+            <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+        </div>
+    </div>
+	<div id="main-section" class="hidden">
+        <h1><mark>Shopping Cart</mark></h1>
+
+	<div class="products">
+        <div class="text-bg-info text-center">
+            <h2>lipstick</h2>
+            <p>Price: $150</p>
+        <img src="images\lipstick.jpg" width="200" height="200"></img>
+        <p> the best stylish lipstick.</p>
+            <button class="add-to-cart" onclick="addToCart('lipstick', 150)">Add to Cart</button>
+        </div>
+
+        <div class="text-bg-warning text-center">
+            <h2>croptop</h2>
+            <p>Price: $100</p>
+            <img src ="images\croptop.jpg" width="200" height="200"></img>
+            <p> modern croptop.</p>
+            <button class="add-to-cart" onclick="addToCart('croptop', 100)">Add to Cart</button>
+        </div>
+    	</div>
+        <div class="text-bg-danger text-center">
+            <h2>shirt</h2>
+            <p>Price: $100</p>
+            <img src="images\shirt.jpg"  width="200" height="200"></img>
+            <p>presenting to you,this fashion-forward shirt.</p>
+            <button class="add-to-cart" onclick="addToCart('shirt', 100)">Add to Cart</button>
+        </div>
+    	</div>
+        <div class="text-bg-secondary text-center">
+            <h2>bag</h2>
+            <p>Price: $150</p>
+            <img src="images\bag.jpg"  width="200" height="200"></img>
+            <p>beautiful bag.</p>
+            <button class="add-to-cart" onclick="addToCart('bag', 150)">Add to Cart</button>
+        </div>
+    	</div>
+        <div class="text-bg-primary text-center">
+            <h2>highheels</h2>
+            <p>Price: $200</p>
+            <img src="images\highheels.jpg"  width="200" height="200"></img>
+            <p>The world is at your feet,so make sure you're wearing great highheels.</p>
+            <button class="add-to-cart" onclick="addToCart('highheels', 200)">Add to Cart</button>
+        </div>
+    	</div>
+        <div class="cart">
+            <h2>Shopping Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="total">0</span></p>
+            <button onclick="checksout()">Checkout</button>
+        </div>
+    </div>
+
+    <script >
+        let cartItems = [];
+    
+    function addToCart(product, price) {
+        cartItems.push({product, price});
+        updateCart();
+    }
+    
+    function updateCart() {
+        let cartList = document.getElementById("cart-items");
+        let totalElement = document.getElementById("total");
+        let total = 0;
+    
+        cartList.innerHTML = "";
+        cartItems.forEach(item => {
+            let listItem = document.createElement("li");
+            listItem.innerText = `${item.product} - $${item.price}`;
+            cartList.appendChild(listItem);
+            total += item.price;
+        });
+    
+        totalElement.innerText = total;
+    }
+    
+    
+    
+    
+    // Add product and cart logic similar to the previous example
+    
+    function checksout() {
+        alert('Thank you for your purchase!');
+    }
+    
+        </script>
+
+
+</body>
+              </html>
